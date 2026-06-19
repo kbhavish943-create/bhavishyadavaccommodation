@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Payment Checkout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .trust-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 12px;
+            font-size: 13px;
+            color: #667eea;
+            flex-wrap: wrap;
+        }
+
+        .trust-indicators span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .amount-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+        }
+
+        .amount-section label {
+            display: block;
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .amount-input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .amount-input-group input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .amount-input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .amount-input-group .currency {
+            padding: 12px 16px;
+            background: #667eea;
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            min-width: 80px;
+            justify-content: center;
+        }
+
+        .payment-methods {
+            margin-bottom: 30px;
+        }
+
+        .payment-methods h3 {
+            color: #333;
+            font-size: 16px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .method-tabs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .method-tab {
+            position: relative;
+        }
+
+        .method-tab input[type="radio"] {
+            display: none;
+        }
+
+        .method-tab label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 12px;
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .method-tab input[type="radio"]:checked + label {
+            border-color: #667eea;
+            background: #eef5ff;
+        }
+
+        .method-tab label img {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 8px;
+        }
+
+        .method-tab label .method-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .method-tab label .method-desc {
+            font-size: 11px;
+            color: #999;
+            margin-top: 4px;
+        }
+
+        .payment-gateway-selector {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #856404;
+        }
+
+        .gateway-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .gateway-btn {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #ffc107;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            color: #333;
+            transition: all 0.3s;
+        }
+
+        .gateway-btn.active {
+            background: #ffc107;
+            color: white;
+        }
+
+        .gateway-btn:hover {
+            background: #ffc107;
+            color: white;
+        }
+
+        .test-cards {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            color: #1565c0;
+        }
+
+        .test-cards strong {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .test-cards p {
+            margin: 2px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .pay-button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .pay-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .pay-button:active {
+            transform: translateY(0);
+        }
+
+        .pay-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .security-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .badge {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .badge-icon {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+
+        .error {
+            background: #ffebee;
+            color: #c62828;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #c62828;
+            display: none;
+        }
+
+        .error.show {
+            display: block;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .loading.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .order-summary {
+            background: #f0f7ff;
+            border: 1px solid #dbeafe;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .order-summary h4 {
+            color: #333;
+            font-size: 14px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            font-size: 13px;
+            color: #555;
+            border-bottom: 1px solid #dbeafe;
+        }
+
+        .summary-row:last-of-type {
+            border-bottom: none;
+        }
+
+        .summary-row.total {
+            padding-top: 12px;
+            padding-bottom: 0;
+            font-size: 16px;
+            font-weight: 700;
+            color: #667eea;
+            border-top: 2px solid #dbeafe;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+
+            .method-tabs {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>💳 Secure Payment Checkout</h1>
+        <p>Fast, secure, and trusted payment processing</p>
+        <div class="trust-indicators">
+            <span>🔒 PCI DSS Compliant</span>
+            <span>✓ 256-bit Encryption</span>
+            <span>🛡️ Fraud Protected</span>
+        </div>
+    </div>
+
+    <form id="paymentForm">
+        <!-- Error Message -->
+        <div class="error" id="errorMsg"></div>
+
+        <!-- Amount Section -->
+        <div class="amount-section">
+            <label for="amount">Amount to Pay</label>
+            <div class="amount-input-group">
+                <input type="number" id="amount" name="amount" value="150" min="1" step="1" required>
+                <div class="currency" id="currencyDisplay">₹ INR</div>
+            </div>
+            <div class="payment-hint">
+                You will pay: <strong id="amountDisplay">₹150</strong>
+            </div>
+        </div>
+
+        <!-- Payment Gateway Selector -->
+        <div class="payment-gateway-selector">
+            <strong>💡 Choose Payment Gateway</strong>
+            <div class="gateway-options">
+                <button type="button" class="gateway-btn active" data-gateway="razorpay" onclick="setGateway('razorpay')">
+                    Razorpay (INR)
+                </button>
+                <button type="button" class="gateway-btn" data-gateway="stripe" onclick="setGateway('stripe')">
+                    Stripe (USD)
+                </button>
+            </div>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="payment-methods">
+            <h3>🎯 Select Payment Method</h3>
+            <div class="method-tabs">
+                <div class="method-tab">
+                    <input type="radio" id="card" name="method" value="card" checked>
+                    <label for="card">
+                        <img src="https://img.icons8.com/color/48/000000/credit-card.png" alt="Card">
+                        <span class="method-name">Card</span>
+                        <span class="method-desc">Visa / Mastercard</span>
+                    </label>
+                </div>
+
+                <div class="method-tab">
+                    <input type="radio" id="upi" name="method" value="upi">
+                    <label for="upi">
+                        <img src="https://img.icons8.com/fluency/48/000000/bhim.png" alt="UPI">
+                        <span class="method-name">UPI</span>
+                        <span class="method-desc">Instant Transfer</span>
+                    </label>
+                </div>
+
+                <div class="method-tab">
+                    <input type="radio" id="netbanking" name="method" value="netbanking">
+                    <label for="netbanking">
+                        <img src="https://img.icons8.com/color/48/000000/bank-building.png" alt="Net Banking">
+                        <span class="method-name">Net Banking</span>
+                        <span class="method-desc">200+ Banks</span>
+                    </label>
+                </div>
+
+                <div class="method-tab">
+                    <input type="radio" id="wallet" name="method" value="wallet">
+                    <label for="wallet">
+                        <img src="https://img.icons8.com/color/48/000000/wallet.png" alt="Wallet">
+                        <span class="method-name">Wallet</span>
+                        <span class="method-desc">Quick Pay</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Test Cards Info -->
+        <div class="test-cards" id="testCardsInfo">
+            <strong>🧪 Test Card (Razorpay)</strong>
+            <p>Card: 4111 1111 1111 1111</p>
+            <p>Expiry: Any future (MM/YY)</p>
+            <p>CVV: Any 3 digits</p>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div class="loading" id="loadingSpinner">
+            <div class="spinner"></div>
+            <p>Processing payment...</p>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="order-summary">
+            <h4>📋 Order Summary</h4>
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="subtotalDisplay">₹150.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Processing Fee</span>
+                <span id="feeDisplay">₹0.00</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total Amount</span>
+                <span id="totalDisplay">₹150.00</span>
+            </div>
+        </div>
+
+
+
+        <!-- Pay Button -->
+        <button type="submit" class="pay-button" id="payBtn">
+            💳 Pay ₹150
+        </button>
+    </form>
+
+    <!-- Security Badges -->
+    <div class="security-badges">
+        <div class="badge">
+            <div class="badge-icon">🔒</div>
+            <div>SSL Secure</div>
+        </div>
+        <div class="badge">
+            <div class="badge-icon">✓</div>
+            <div>Verified</div>
+        </div>
+        <div class="badge">
+            <div class="badge-icon">🛡️</div>
+            <div>Protected</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let selectedGateway = 'razorpay';
+    const API_BASE = 'http://localhost:3000/api'; // Change to your server URL
+
+    // Set gateway
+    function setGateway(gateway) {
+        selectedGateway = gateway;
+        document.querySelectorAll('.gateway-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.querySelector(`[data-gateway="${gateway}"]`).classList.add('active');
+
+        // Update currency display
+        const currencyDisplay = document.getElementById('currencyDisplay');
+        const amountDisplay = document.getElementById('amountDisplay');
+        const payBtn = document.getElementById('payBtn');
+        const testCardsInfo = document.getElementById('testCardsInfo');
+
+        if (gateway === 'razorpay') {
+            currencyDisplay.textContent = '₹ INR';
+            const amount = document.getElementById('amount').value;
+            amountDisplay.textContent = '₹' + amount;
+            payBtn.textContent = 'Pay ₹' + amount;
+            testCardsInfo.innerHTML = `
+                <strong>🧪 Test Card (Razorpay)</strong>
+                <p>Card: 4111 1111 1111 1111</p>
+                <p>Expiry: Any future (MM/YY)</p>
+                <p>CVV: Any 3 digits</p>
+            `;
+        } else {
+            currencyDisplay.textContent = '$ USD';
+            const amount = (parseInt(document.getElementById('amount').value) / 100).toFixed(2);
+            amountDisplay.textContent = '$' + amount;
+            payBtn.textContent = 'Pay $' + amount;
+            testCardsInfo.innerHTML = `
+                <strong>🧪 Test Card (Stripe)</strong>
+                <p>Card: 4242 4242 4242 4242</p>
+                <p>Expiry: Any future (MM/YY)</p>
+                <p>CVV: Any 3 digits</p>
+            `;
+        }
+    }
+
+    // Update amount display
+    document.getElementById('amount').addEventListener('input', function() {
+        const amount = parseInt(this.value) || 0;
+        
+        // Calculate processing fee (2% for card, 0% for others)
+        const method = document.querySelector('input[name="method"]:checked').value;
+        const fee = method === 'card' ? Math.ceil(amount * 0.02) : 0;
+        const total = amount + fee;
+        
+        // Update displays
+        const subtotal = document.getElementById('subtotalDisplay');
+        const feeDisplay = document.getElementById('feeDisplay');
+        const totalDisplay = document.getElementById('totalDisplay');
+        const payBtn = document.getElementById('payBtn');
+        
+        if (selectedGateway === 'razorpay') {
+            subtotal.textContent = '₹' + amount.toFixed(2);
+            feeDisplay.textContent = '₹' + fee.toFixed(2);
+            totalDisplay.textContent = '₹' + total.toFixed(2);
+            payBtn.textContent = '💳 Pay ₹' + total;
+        } else {
+            const usdAmount = (amount / 100).toFixed(2);
+            const usdFee = (fee / 100).toFixed(2);
+            const usdTotal = (total / 100).toFixed(2);
+            subtotal.textContent = '$' + usdAmount;
+            feeDisplay.textContent = '$' + usdFee;
+            totalDisplay.textContent = '$' + usdTotal;
+            payBtn.textContent = '💳 Pay $' + usdTotal;
+        }
+        
+        setGateway(selectedGateway);
+    });
+
+    // Initial update
+    document.getElementById('amount').dispatchEvent(new Event('input'));
+
+    // Form submission
+    document.getElementById('paymentForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const amount = parseInt(document.getElementById('amount').value);
+        const method = document.querySelector('input[name="method"]:checked').value;
+        const errorMsg = document.getElementById('errorMsg');
+        const payBtn = document.getElementById('payBtn');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+
+        // Validation
+        if (!amount || amount < 1) {
+            showError('Please enter a valid amount');
+            return;
+        }
+
+        if (!method) {
+            showError('Please select a payment method');
+            return;
+        }
+
+        // Show loading
+        loadingSpinner.classList.add('show');
+        payBtn.disabled = true;
+        errorMsg.classList.remove('show');
+
+        try {
+            if (selectedGateway === 'razorpay') {
+                await processRazorpay(amount, method);
+            } else {
+                await processStripe(amount, method);
+            }
+        } catch (error) {
+            showError(error.message);
+            loadingSpinner.classList.remove('show');
+            payBtn.disabled = false;
+        }
+    });
+
+    function showError(message) {
+        const errorMsg = document.getElementById('errorMsg');
+        errorMsg.textContent = message;
+        errorMsg.classList.add('show');
+    }
+
+    async function processRazorpay(amount, method) {
+        // Create Razorpay order
+        const response = await fetch(`${API_BASE}/razorpay/create-order`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                amount: amount,
+                method: method 
+            })
+        });
+
+        const data = await response.json();
+
+        if (!data.orderId) {
+            throw new Error('Failed to create order');
+        }
+
+        // Load Razorpay script
+        const script = document.createElement('script');
+        script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+        script.onload = () => {
+            const options = {
+                key: data.keyId,
+                amount: amount,
+                currency: 'INR',
+                order_id: data.orderId,
+                handler: async function(response) {
+                    // Verify payment
+                    const verifyResponse = await fetch(`${API_BASE}/razorpay/verify-payment`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            orderId: data.orderId,
+                            paymentId: response.razorpay_payment_id,
+                            signature: response.razorpay_signature
+                        })
+                    });
+
+                    const verifyData = await verifyResponse.json();
+                    if (verifyData.success) {
+                        window.location.href = '/success.php?order=' + data.orderId;
+                    } else {
+                        showError('Payment verification failed');
+                    }
+                },
+                prefill: {
+                    name: 'Customer',
+                    email: 'customer@example.com',
+                    contact: '9999999999'
+                },
+                notes: {
+                    method: method
+                },
+                theme: {
+                    color: '#667eea'
+                }
+            };
+
+            const rzp = new Razorpay(options);
+            rzp.open();
+        };
+        document.head.appendChild(script);
+    }
+
+    async function processStripe(amount, method) {
+        // Create Stripe session
+        const response = await fetch(`${API_BASE}/stripe/create-session`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                amount: Math.round(amount * 0.013), // Convert INR to USD approximation
+                method: method 
+            })
+        });
+
+        const data = await response.json();
+
+        if (!data.sessionId) {
+            throw new Error('Failed to create payment session');
+        }
+
+        // Redirect to Stripe Checkout
+        const stripe = await loadStripe(data.publishableKey);
+        stripe.redirectToCheckout({ sessionId: data.sessionId });
+    }
+
+    // Load Stripe.js and return initialized Stripe instance
+    async function loadStripe(key) {
+        if (window.Stripe) return Stripe(key);
+
+        return new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = 'https://js.stripe.com/v3/';
+            script.async = true;
+            script.onload = () => {
+                try {
+                    const stripe = Stripe(key);
+                    resolve(stripe);
+                } catch (err) {
+                    reject(new Error('Stripe initialization failed'));
+                }
+            };
+            script.onerror = () => reject(new Error('Failed to load Stripe.js'));
+            document.head.appendChild(script);
+        });
+    }
+</script>
+
+</body>
+</html>

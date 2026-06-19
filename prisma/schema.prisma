@@ -1,0 +1,129 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  username  String    @unique
+  email     String    @unique
+  passwordHash String
+  role      String    @default("user") // "user", "admin", "moderator"
+  active    Boolean   @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  orders    Order[]
+  contacts  Contact[]
+  @@map("users")
+}
+
+model Contact {
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String
+  message   String    @db.LongText
+  userId    Int?
+  readStatus Boolean  @default(false)
+  ip        String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  user      User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+  @@index([userId])
+  @@map("contacts")
+}
+
+model Product {
+  id        Int       @id @default(autoincrement())
+  name      String
+  description String @db.LongText
+  price     Decimal   @db.Decimal(10, 2)
+  image     String?
+  stock     Int       @default(0)
+  featured  Boolean   @default(false)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  orderItems OrderItem[]
+  @@map("featured_items")
+}
+
+model Order {
+  id        Int       @id @default(autoincrement())
+  userId    Int
+  totalAmount Decimal @db.Decimal(10, 2)
+  status    String    @default("pending") // "pending", "paid", "shipped", "delivered", "cancelled"
+  stripePaymentId String? @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items     OrderItem[]
+  @@index([userId])
+  @@map("orders")
+}
+
+model OrderItem {
+  id        Int       @id @default(autoincrement())
+  orderId   Int
+  productId Int
+  quantity  Int
+  price     Decimal   @db.Decimal(10, 2)
+
+  order     Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product   Product   @relation(fields: [productId], references: [id])
+  @@index([orderId])
+  @@index([productId])
+  @@map("order_items")
+}
+
+model Feature {
+  id        Int       @id @default(autoincrement())
+  title     String
+  description String
+  icon      String?
+  enabled   Boolean   @default(true)
+  order     Int       @default(0)
+
+  @@map("features")
+}
+
+model GalleryItem {
+  id        Int       @id @default(autoincrement())
+  title     String
+  image     String
+  category  String
+  order     Int       @default(0)
+  createdAt DateTime  @default(now())
+
+  @@map("gallery_items")
+}
+
+model Setting {
+  id        Int       @id @default(autoincrement())
+  key       String    @unique
+  value     String    @db.LongText
+  updatedAt DateTime  @updatedAt
+
+  @@map("settings")
+}
+
+model ActivityLog {
+  id        Int       @id @default(autoincrement())
+  userId    Int?
+  action    String
+  details   String?   @db.LongText
+  ip        String?
+  createdAt DateTime  @default(now())
+
+  @@index([userId])
+  @@map("activity_log")
+}

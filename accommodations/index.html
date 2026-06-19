@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Find affordable boys hostel, PG, and accommodation across India. Filter by state and city to find perfect student housing.">
+  <meta name="keywords" content="boys hostel, PG, accommodation, student housing, India, Deoghar, Delhi, Bangalore">
+  <meta name="author" content="BHAVISH YADAV ACCOMMODATION">
+  <title>Find Accommodations - Boys Hostel & PG Listings Across India</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%23667eea'>🏠</text></svg>">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="./css/style.css">
+  
+  <!-- Open Graph for Social Sharing -->
+  <meta property="og:title" content="Find Your Perfect Accommodation - Boys Hostel & PG Listings">
+  <meta property="og:description" content="Discover affordable student accommodations across India with state-wise and city-wise filtering.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://via.placeholder.com/1200x630?text=Accommodation+Finder">
+</head>
+<body>
+  <div class="container">
+    <!-- Header Section -->
+    <div class="header">
+      <h1>🏠 Find Your Perfect Accommodation</h1>
+      <p>Discover affordable boys hostels, PGs, and student accommodations across India. Filter by state and city to find your ideal home away from home.</p>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="filter-section">
+      <h2 class="filter-title">🔍 Search Accommodations</h2>
+      
+      <div class="filter-controls">
+        <div class="filter-group">
+          <label for="stateSelect">Select State</label>
+          <select id="stateSelect">
+            <option value="">All States</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="citySelect">Select City</label>
+          <select id="citySelect" disabled>
+            <option value="">Select City</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="searchInput">Search by Name</label>
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Search lodge, hostel, or PG name..."
+            autocomplete="off"
+          >
+        </div>
+      </div>
+
+      <!-- Stats Section -->
+      <div id="lodgeStats"></div>
+    </div>
+
+    <!-- Lodges Container -->
+    <div id="lodgesContainer">
+      <p class="placeholder">Loading accommodations...</p>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="./js/filter.js"></script>
+
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Accommodation Finder - Boys Hostel & PG Listings",
+    "description": "Find affordable boys hostel and PG accommodations across India",
+    "url": "https://yourwebsite.com/accommodations/",
+    "areaServed": "IN",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "availableLanguageID": "en"
+    }
+  }
+  </script>
+</body>
+</html>

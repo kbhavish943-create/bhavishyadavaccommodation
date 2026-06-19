@@ -1,0 +1,782 @@
+{
+  "states": [
+    {
+      "stateName": "Andhra Pradesh",
+      "stateId": "andhra_pradesh",
+      "cities": [
+        {
+          "cityName": "Hyderabad",
+          "cityId": "hyderabad",
+          "lodges": []
+        },
+        {
+          "cityName": "Vijayawada",
+          "cityId": "vijayawada",
+          "lodges": []
+        },
+        {
+          "cityName": "Visakhapatnam",
+          "cityId": "visakhapatnam",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Arunachal Pradesh",
+      "stateId": "arunachal_pradesh",
+      "cities": [
+        {
+          "cityName": "Itanagar",
+          "cityId": "itanagar",
+          "lodges": []
+        },
+        {
+          "cityName": "Naharlagun",
+          "cityId": "naharlagun",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Assam",
+      "stateId": "assam",
+      "cities": [
+        {
+          "cityName": "Guwahati",
+          "cityId": "guwahati",
+          "lodges": []
+        },
+        {
+          "cityName": "Dibrugarh",
+          "cityId": "dibrugarh",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Bihar",
+      "stateId": "bihar",
+      "cities": [
+        {
+          "cityName": "Deoghar",
+          "cityId": "deoghar",
+          "lodges": [
+            {
+              "id": 1,
+              "name": "BHAVISH YADAV ACCOMMODATION LODGE",
+              "location": "Baijnathpur, Deoghar",
+              "distanceFromCoaching": "0.5 km",
+              "roomTypes": [
+                {
+                  "type": "Single Room",
+                  "price": 2100,
+                  "availability": true,
+                  "description": "Individual rooms for focused studies"
+                },
+                {
+                  "type": "Double Room",
+                  "price": 2500,
+                  "availability": true,
+                  "description": "Comfortable sharing accommodation"
+                },
+                {
+                  "type": "Premium AC Single",
+                  "price": 6000,
+                  "availability": true,
+                  "description": "Spacious AC room with all amenities"
+                },
+                {
+                  "type": "Premium AC Double",
+                  "price": 8000,
+                  "availability": true,
+                  "description": "Premium double room with AC"
+                },
+                {
+                  "type": "Luxury Suite",
+                  "price": 10000,
+                  "availability": false,
+                  "description": "Premium single/family accommodation"
+                }
+              ],
+              "amenities": ["WiFi", "24/7 Water", "Electricity Backup", "Security", "Study Room", "Laundry"],
+              "ownerName": "Bhavish Yadav",
+              "phoneNumber": "+91-6299652345",
+              "email": "bhavish.accommodation@gmail.com",
+              "rating": 4.8,
+              "reviews": 45,
+              "imageUrl": "https://via.placeholder.com/300x200?text=Bhavish+Yadav+Lodge",
+              "featured": true
+            }
+          ]
+        },
+        {
+          "cityName": "Patna",
+          "cityId": "patna",
+          "lodges": [
+            {
+              "id": 4,
+              "name": "Elite Boys Hostel Patna",
+              "location": "Boring Road, Patna",
+              "distanceFromCoaching": "2 km",
+              "roomTypes": [
+                {
+                  "type": "Single Room",
+                  "price": 3000,
+                  "availability": true,
+                  "description": "Individual room"
+                },
+                {
+                  "type": "Double Room",
+                  "price": 3500,
+                  "availability": true,
+                  "description": "Shared double room"
+                },
+                {
+                  "type": "Triple Room",
+                  "price": 2500,
+                  "availability": true,
+                  "description": "Triple sharing"
+                }
+              ],
+              "amenities": ["WiFi", "24/7 Water", "Mess Facility", "Gym", "Security"],
+              "ownerName": "Arun Pandey",
+              "phoneNumber": "+91-9876543210",
+              "email": "elite.hostel@gmail.com",
+              "rating": 4.6,
+              "reviews": 55,
+              "imageUrl": "https://via.placeholder.com/300x200?text=Elite+Hostel",
+              "featured": true
+            }
+          ]
+        },
+        {
+          "cityName": "Gaya",
+          "cityId": "gaya",
+          "lodges": [
+            {
+              "id": 6,
+              "name": "Gaya Student Lodge",
+              "location": "Station Road, Gaya",
+              "distanceFromCoaching": "1.5 km",
+              "roomTypes": [
+                {
+                  "type": "Single Room",
+                  "price": 2000,
+                  "availability": true,
+                  "description": "Budget single room"
+                },
+                {
+                  "type": "Double Room",
+                  "price": 2200,
+                  "availability": true,
+                  "description": "Budget double room"
+                }
+              ],
+              "amenities": ["WiFi", "24/7 Water", "Security"],
+              "ownerName": "Mohan Kumar",
+              "phoneNumber": "+91-8765432109",
+              "email": "gaya.lodge@gmail.com",
+              "rating": 4.2,
+              "reviews": 25,
+              "imageUrl": "https://via.placeholder.com/300x200?text=Gaya+Lodge",
+              "featured": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stateName": "Chhattisgarh",
+      "stateId": "chhattisgarh",
+      "cities": [
+        {
+          "cityName": "Raipur",
+          "cityId": "raipur",
+          "lodges": []
+        },
+        {
+          "cityName": "Bilaspur",
+          "cityId": "bilaspur",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Goa",
+      "stateId": "goa",
+      "cities": [
+        {
+          "cityName": "Panaji",
+          "cityId": "panaji",
+          "lodges": []
+        },
+        {
+          "cityName": "Margao",
+          "cityId": "margao",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Gujarat",
+      "stateId": "gujarat",
+      "cities": [
+        {
+          "cityName": "Ahmedabad",
+          "cityId": "ahmedabad",
+          "lodges": []
+        },
+        {
+          "cityName": "Surat",
+          "cityId": "surat",
+          "lodges": []
+        },
+        {
+          "cityName": "Vadodara",
+          "cityId": "vadodara",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Haryana",
+      "stateId": "haryana",
+      "cities": [
+        {
+          "cityName": "Faridabad",
+          "cityId": "faridabad",
+          "lodges": []
+        },
+        {
+          "cityName": "Gurgaon",
+          "cityId": "gurgaon",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Himachal Pradesh",
+      "stateId": "himachal_pradesh",
+      "cities": [
+        {
+          "cityName": "Shimla",
+          "cityId": "shimla",
+          "lodges": []
+        },
+        {
+          "cityName": "Mandi",
+          "cityId": "mandi",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Jharkhand",
+      "stateId": "jharkhand",
+      "cities": [
+        {
+          "cityName": "Ranchi",
+          "cityId": "ranchi",
+          "lodges": []
+        },
+        {
+          "cityName": "Dhanbad",
+          "cityId": "dhanbad",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Karnataka",
+      "stateId": "karnataka",
+      "cities": [
+        {
+          "cityName": "Bangalore",
+          "cityId": "bangalore",
+          "lodges": [
+            {
+              "id": 11,
+              "name": "Tech City Hostel",
+              "location": "Indiranagar, Bangalore",
+              "distanceFromCoaching": "2.5 km",
+              "roomTypes": [
+                {
+                  "type": "Single Room",
+                  "price": 5000,
+                  "availability": true,
+                  "description": "Individual room"
+                },
+                {
+                  "type": "Double Room",
+                  "price": 6000,
+                  "availability": true,
+                  "description": "Shared AC double"
+                }
+              ],
+              "amenities": ["WiFi", "24/7 Water", "Security", "Common Kitchen", "Laundry"],
+              "ownerName": "Amit Patel",
+              "phoneNumber": "+91-7865432109",
+              "email": "tech.hostel@gmail.com",
+              "rating": 4.6,
+              "reviews": 48,
+              "imageUrl": "https://via.placeholder.com/300x200?text=Tech+City",
+              "featured": true
+            }
+          ]
+        },
+        {
+          "cityName": "Mysore",
+          "cityId": "mysore",
+          "lodges": []
+        },
+        {
+          "cityName": "Mangalore",
+          "cityId": "mangalore",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Kerala",
+      "stateId": "kerala",
+      "cities": [
+        {
+          "cityName": "Kochi",
+          "cityId": "kochi",
+          "lodges": []
+        },
+        {
+          "cityName": "Thiruvananthapuram",
+          "cityId": "thiruvananthapuram",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Madhya Pradesh",
+      "stateId": "madhya_pradesh",
+      "cities": [
+        {
+          "cityName": "Indore",
+          "cityId": "indore",
+          "lodges": []
+        },
+        {
+          "cityName": "Bhopal",
+          "cityId": "bhopal",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Maharashtra",
+      "stateId": "maharashtra",
+      "cities": [
+        {
+          "cityName": "Mumbai",
+          "cityId": "mumbai",
+          "lodges": []
+        },
+        {
+          "cityName": "Pune",
+          "cityId": "pune",
+          "lodges": []
+        },
+        {
+          "cityName": "Nagpur",
+          "cityId": "nagpur",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Manipur",
+      "stateId": "manipur",
+      "cities": [
+        {
+          "cityName": "Imphal",
+          "cityId": "imphal",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Meghalaya",
+      "stateId": "meghalaya",
+      "cities": [
+        {
+          "cityName": "Shillong",
+          "cityId": "shillong",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Mizoram",
+      "stateId": "mizoram",
+      "cities": [
+        {
+          "cityName": "Aizawl",
+          "cityId": "aizawl",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Nagaland",
+      "stateId": "nagaland",
+      "cities": [
+        {
+          "cityName": "Kohima",
+          "cityId": "kohima",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Odisha",
+      "stateId": "odisha",
+      "cities": [
+        {
+          "cityName": "Bhubaneswar",
+          "cityId": "bhubaneswar",
+          "lodges": []
+        },
+        {
+          "cityName": "Rourkela",
+          "cityId": "rourkela",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Punjab",
+      "stateId": "punjab",
+      "cities": [
+        {
+          "cityName": "Chandigarh",
+          "cityId": "chandigarh",
+          "lodges": []
+        },
+        {
+          "cityName": "Amritsar",
+          "cityId": "amritsar",
+          "lodges": []
+        },
+        {
+          "cityName": "Ludhiana",
+          "cityId": "ludhiana",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Rajasthan",
+      "stateId": "rajasthan",
+      "cities": [
+        {
+          "cityName": "Jaipur",
+          "cityId": "jaipur",
+          "lodges": []
+        },
+        {
+          "cityName": "Jodhpur",
+          "cityId": "jodhpur",
+          "lodges": []
+        },
+        {
+          "cityName": "Udaipur",
+          "cityId": "udaipur",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Sikkim",
+      "stateId": "sikkim",
+      "cities": [
+        {
+          "cityName": "Gangtok",
+          "cityId": "gangtok",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Tamil Nadu",
+      "stateId": "tamil_nadu",
+      "cities": [
+        {
+          "cityName": "Chennai",
+          "cityId": "chennai",
+          "lodges": []
+        },
+        {
+          "cityName": "Coimbatore",
+          "cityId": "coimbatore",
+          "lodges": []
+        },
+        {
+          "cityName": "Madurai",
+          "cityId": "madurai",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Telangana",
+      "stateId": "telangana",
+      "cities": [
+        {
+          "cityName": "Hyderabad",
+          "cityId": "hyderabad_telangana",
+          "lodges": []
+        },
+        {
+          "cityName": "Warangal",
+          "cityId": "warangal",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Tripura",
+      "stateId": "tripura",
+      "cities": [
+        {
+          "cityName": "Agartala",
+          "cityId": "agartala",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Uttar Pradesh",
+      "stateId": "uttar_pradesh",
+      "cities": [
+        {
+          "cityName": "Lucknow",
+          "cityId": "lucknow",
+          "lodges": [
+            {
+              "id": 7,
+              "name": "Premium Student Hostel Lucknow",
+              "location": "Gomti Nagar, Lucknow",
+              "distanceFromCoaching": "1 km",
+              "roomTypes": [
+                {
+                  "type": "Single Room",
+                  "price": 3500,
+                  "availability": true,
+                  "description": "Individual room"
+                },
+                {
+                  "type": "Double Room",
+                  "price": 4000,
+                  "availability": true,
+                  "description": "Shared double"
+                },
+                {
+                  "type": "Triple Room",
+                  "price": 3000,
+                  "availability": true,
+                  "description": "Triple sharing"
+                }
+              ],
+              "amenities": ["WiFi", "Mess Facility", "24/7 Security", "Study Room", "Gym"],
+              "ownerName": "Priya Verma",
+              "phoneNumber": "+91-9765432108",
+              "email": "premium.lucknow@gmail.com",
+              "rating": 4.7,
+              "reviews": 60,
+              "imageUrl": "https://via.placeholder.com/300x200?text=Premium+Lucknow",
+              "featured": true
+            }
+          ]
+        },
+        {
+          "cityName": "Agra",
+          "cityId": "agra",
+          "lodges": [
+            {
+              "id": 9,
+              "name": "Agra Students PG",
+              "location": "Shilpgram, Agra",
+              "distanceFromCoaching": "3 km",
+              "roomTypes": [
+                {
+                  "type": "Double Room",
+                  "price": 2600,
+                  "availability": true,
+                  "description": "Standard double"
+                },
+                {
+                  "type": "Deluxe Double",
+                  "price": 3800,
+                  "availability": true,
+                  "description": "Deluxe AC double"
+                }
+              ],
+              "amenities": ["WiFi", "24/7 Water", "Laundry Service"],
+              "ownerName": "Deepak Yadav",
+              "phoneNumber": "+91-8654321098",
+              "email": "agra.pg@gmail.com",
+              "rating": 4.4,
+              "reviews": 30,
+              "imageUrl": "https://via.placeholder.com/300x200?text=Agra+PG",
+              "featured": false
+            }
+          ]
+        },
+        {
+          "cityName": "Kanpur",
+          "cityId": "kanpur",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Uttarakhand",
+      "stateId": "uttarakhand",
+      "cities": [
+        {
+          "cityName": "Dehradun",
+          "cityId": "dehradun",
+          "lodges": []
+        },
+        {
+          "cityName": "Mussoorie",
+          "cityId": "mussoorie",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "West Bengal",
+      "stateId": "west_bengal",
+      "cities": [
+        {
+          "cityName": "Kolkata",
+          "cityId": "kolkata",
+          "lodges": []
+        },
+        {
+          "cityName": "Siliguri",
+          "cityId": "siliguri",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Andaman and Nicobar Islands",
+      "stateId": "andaman_nicobar",
+      "cities": [
+        {
+          "cityName": "Port Blair",
+          "cityId": "port_blair",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Chandigarh",
+      "stateId": "chandigarh_ut",
+      "cities": [
+        {
+          "cityName": "Chandigarh",
+          "cityId": "chandigarh_city",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Dadra and Nagar Haveli",
+      "stateId": "dadra_nagar_haveli",
+      "cities": [
+        {
+          "cityName": "Silvassa",
+          "cityId": "silvassa",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Daman and Diu",
+      "stateId": "daman_diu",
+      "cities": [
+        {
+          "cityName": "Daman",
+          "cityId": "daman",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Delhi",
+      "stateId": "delhi",
+      "cities": [
+        {
+          "cityName": "New Delhi",
+          "cityId": "new_delhi",
+          "lodges": [
+            {
+              "id": 10,
+              "name": "Delhi Premium Hostel",
+              "location": "Lajpat Nagar, New Delhi",
+              "distanceFromCoaching": "2 km",
+              "roomTypes": [
+                {
+                  "type": "Single Room",
+                  "price": 4500,
+                  "availability": true,
+                  "description": "Individual AC room"
+                },
+                {
+                  "type": "Double Room",
+                  "price": 5500,
+                  "availability": true,
+                  "description": "Shared AC double"
+                }
+              ],
+              "amenities": ["WiFi", "AC in all rooms", "24/7 Security", "Mess", "Gym"],
+              "ownerName": "Rohan Kapoor",
+              "phoneNumber": "+91-7654321987",
+              "email": "delhi.premium@gmail.com",
+              "rating": 4.9,
+              "reviews": 75,
+              "imageUrl": "https://via.placeholder.com/300x200?text=Delhi+Premium",
+              "featured": true
+            }
+          ]
+        },
+        {
+          "cityName": "Old Delhi",
+          "cityId": "old_delhi",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Lakshadweep",
+      "stateId": "lakshadweep",
+      "cities": [
+        {
+          "cityName": "Kavaratti",
+          "cityId": "kavaratti",
+          "lodges": []
+        }
+      ]
+    },
+    {
+      "stateName": "Puducherry",
+      "stateId": "puducherry",
+      "cities": [
+        {
+          "cityName": "Puducherry",
+          "cityId": "puducherry_city",
+          "lodges": []
+        }
+      ]
+    }
+  ]
+}

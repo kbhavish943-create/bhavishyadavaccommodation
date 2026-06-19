@@ -1,0 +1,24 @@
+{
+  "name": "payment-gateway-integration",
+  "description": "Multi-gateway payment system (Razorpay + Stripe) with PHP backend",
+  "version": "1.0.0",
+  "require": {
+    "php": ">=7.4",
+    "razorpay/razorpay": "^2.9",
+    "stripe/stripe-php": "^12.0",
+    "vlucas/phpdotenv": "^5.5"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "PaymentGateway\\": "src/"
+    }
+  },
+  "scripts": {
+    "install-vendors": "composer install --no-dev",
+    "test": "phpunit",
+    "webhook-test": "ngrok http 8000"
+  }
+}
